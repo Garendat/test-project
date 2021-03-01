@@ -14,11 +14,9 @@ class HouseController extends Controller
     public function index(HouseFilterRequest $request)
     {
         $house_filter = new HouseFilter( $request->validated() );
-
         $filteredHouses = House::filter( $house_filter )->get();
 
         return HouseResource::collection( $filteredHouses );
-
     }
 
 
