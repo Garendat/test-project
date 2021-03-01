@@ -12,7 +12,7 @@
                 <el-input v-model="column.value" :type="column.type" placeholder="Введите значение"></el-input>
             </el-form-item>
             <el-form-item>
-                <el-button type="primary" @click="sendRequest">Применить</el-button>
+                <el-button type="primary" :disabled="disabledSend" @click="sendRequest">Применить</el-button>
             </el-form-item>
         </el-form>
 
@@ -104,6 +104,10 @@
                 })
 
                 return params;
+            },
+
+            disabledSend() {
+                return !this.tableColumns.some(item => item.value !== null)
             }
         },
 
